@@ -1,4 +1,4 @@
-from machine import Pin,SPI
+from machine import Pin, SPI
 import framebuf
 import time
 
@@ -147,6 +147,20 @@ class ST7789(framebuf.FrameBuffer):
         self.spi.write(self.buffer)
         self.cs(1)
         
+    def build_frame(self):
+        self.fill(0xF232)
+        self.line(2,2,70,2,0xBB56)
+        self.line(70,2,85,17,0xBB56)
+        self.line(85,17,222,17,0xBB56)
+        self.line(222,17,237,32,0xBB56)
+        self.line(2,2,2,118,0xBB56)
+        self.line(2,118,17,132,0xBB56)
+        self.line(17,132,237,132,0xBB56)
+        self.line(237,32,237,132,0xBB56)
+        self.text("Raspberry Pi Pico",90,7,0xFF00)
+        self.text("PicoGo",10,7,0x001F)
+        self.text("Robo Challenge",70,120,0x07E0)
+
 if __name__=='__main__':
     lcd = ST7789()
     lcd.fill(0xFFFF)

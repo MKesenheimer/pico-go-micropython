@@ -4,7 +4,7 @@ from TRSensor import TRSensor
 from Motor import PicoGo
 import time
 from ST7789 import ST7789
-    
+
 lcd = ST7789()
 lcd.build_frame()
 lcd.text("Line-Tracking", 10, 30, 0xFFFF)
